@@ -82,7 +82,29 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     
                     addChild(box)
                 } else {
-                    let ball = SKSpriteNode(imageNamed: "ballRed")
+                    let ball: SKSpriteNode
+                    let random = GKRandomSource.sharedRandom().nextIntWithUpperBound(7)
+                    switch random {
+                    case 0:
+                        ball = SKSpriteNode(imageNamed: "ballBlue")
+                    case 1:
+                        ball = SKSpriteNode(imageNamed: "ballCyan")
+                    case 2:
+                        ball = SKSpriteNode(imageNamed: "ballGreen")
+                    case 3:
+                        ball = SKSpriteNode(imageNamed: "ballGrey")
+                    case 4:
+                        ball = SKSpriteNode(imageNamed: "ballPurple")
+                    case 5:
+                        ball = SKSpriteNode(imageNamed: "ballRed")
+                    case 6:
+                        ball = SKSpriteNode(imageNamed: "ballYellow")
+                        
+                    default:
+                        ball = SKSpriteNode(imageNamed: "ballBlue")
+
+                    }
+                   
                     ball.physicsBody = SKPhysicsBody(circleOfRadius: ball.size.width / 2.0)
                     ball.physicsBody!.contactTestBitMask = ball.physicsBody!.collisionBitMask
                     ball.physicsBody!.restitution = 0.4
